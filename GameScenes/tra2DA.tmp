@@ -1,0 +1,131 @@
+[gd_scene load_steps=10 format=3 uid="uid://pffb10ffg046"]
+
+[ext_resource type="PackedScene" uid="uid://b185hseq76s0r" path="res://UtilityScenes/transaction_list.tscn" id="1_1gb5v"]
+[ext_resource type="Script" path="res://GameScenes/trading_scene.gd" id="1_4veaw"]
+[ext_resource type="PackedScene" uid="uid://cgjy71b33jh0a" path="res://UtilityScenes/transaction_entry.tscn" id="2_3ncer"]
+[ext_resource type="Texture2D" uid="uid://ckklnoi5gjn8" path="res://resources/images/countdown_bg.png" id="4_voyph"]
+[ext_resource type="FontFile" uid="uid://vit02gnuv6r8" path="res://resources/fonts/8bitOperatorPlus8-Bold.ttf" id="5_wmc25"]
+[ext_resource type="Texture2D" uid="uid://bukgr54kthpk5" path="res://resources/images/gui/progress_back.png" id="6_an1ku"]
+[ext_resource type="Texture2D" uid="uid://necl1kniiuc1" path="res://resources/images/gui/progress_negative.png" id="7_7nwfj"]
+[ext_resource type="Texture2D" uid="uid://dhn7k4dnf2h21" path="res://resources/images/gui/progress_separator.png" id="8_i6kx3"]
+[ext_resource type="Texture2D" uid="uid://cp06nc7s83ued" path="res://resources/images/gui/progress_positive.png" id="9_6455e"]
+
+[node name="TradingScene" type="Node2D"]
+script = ExtResource("1_4veaw")
+transaction_entry_scene = ExtResource("2_3ncer")
+
+[node name="BuyTransactionList" parent="." instance=ExtResource("1_1gb5v")]
+
+[node name="SellTransactionList" parent="." instance=ExtResource("1_1gb5v")]
+position = Vector2(532, 0)
+
+[node name="ConfirmTransaction" type="Button" parent="."]
+offset_left = 365.0
+offset_top = 270.0
+offset_right = 436.0
+offset_bottom = 324.0
+text = "^
+Confirm"
+
+[node name="BuyEntry" parent="." instance=ExtResource("2_3ncer")]
+position = Vector2(400, 184)
+
+[node name="SellEntry" parent="." instance=ExtResource("2_3ncer")]
+position = Vector2(400, 391)
+
+[node name="TransactionTimer" type="Timer" parent="."]
+
+[node name="ClockTimer" type="Timer" parent="."]
+
+[node name="CountDownTimer" type="Timer" parent="."]
+
+[node name="Label" type="Label" parent="."]
+offset_left = 339.0
+offset_top = 53.0
+offset_right = 475.0
+offset_bottom = 79.0
+horizontal_alignment = 1
+
+[node name="DayLabel" type="Label" parent="."]
+offset_left = 335.0
+offset_top = 10.0
+offset_right = 471.0
+offset_bottom = 36.0
+horizontal_alignment = 1
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="CountdownPanel" type="CenterContainer" parent="CanvasLayer"]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/CountdownPanel"]
+custom_minimum_size = Vector2(200, 200)
+layout_mode = 2
+
+[node name="CountdownBackground" type="TextureRect" parent="CanvasLayer/CountdownPanel/MarginContainer"]
+layout_mode = 2
+texture = ExtResource("4_voyph")
+
+[node name="CountdownLabel" type="Label" parent="CanvasLayer/CountdownPanel/MarginContainer"]
+layout_mode = 2
+size_flags_vertical = 1
+theme_override_fonts/font = ExtResource("5_wmc25")
+theme_override_font_sizes/font_size = 200
+text = "1"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CenterContainer" type="CenterContainer" parent="CanvasLayer"]
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/CenterContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 0
+alignment = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/CenterContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_top = 4
+
+[node name="NegativeRep" type="TextureProgressBar" parent="CanvasLayer/CenterContainer/VBoxContainer/HBoxContainer/MarginContainer"]
+layout_mode = 2
+fill_mode = 1
+texture_under = ExtResource("6_an1ku")
+texture_progress = ExtResource("7_7nwfj")
+texture_progress_offset = Vector2(1, 1)
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/CenterContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("8_i6kx3")
+
+[node name="MarginContainer2" type="MarginContainer" parent="CanvasLayer/CenterContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_top = 4
+
+[node name="PositiveRep" type="TextureProgressBar" parent="CanvasLayer/CenterContainer/VBoxContainer/HBoxContainer/MarginContainer2"]
+layout_mode = 2
+texture_under = ExtResource("6_an1ku")
+texture_progress = ExtResource("9_6455e")
+texture_progress_offset = Vector2(0, 1)
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_top = 8
+
+[connection signal="pressed" from="ConfirmTransaction" to="." method="_on_confirm_transaction_pressed"]
+[connection signal="timeout" from="TransactionTimer" to="." method="_on_transaction_timer_timeout"]
+[connection signal="timeout" from="ClockTimer" to="." method="_on_clock_timer_timeout"]
+[connection signal="timeout" from="CountDownTimer" to="." method="_on_count_down_timer_timeout"]

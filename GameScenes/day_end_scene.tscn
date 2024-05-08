@@ -1,0 +1,208 @@
+[gd_scene load_steps=7 format=3 uid="uid://c5sh84adhlx7u"]
+
+[ext_resource type="Script" path="res://GameScenes/day_end_scene.gd" id="1_hod82"]
+[ext_resource type="Texture2D" uid="uid://cfxelih1c5nng" path="res://resources/images/textbox.png" id="1_un0vf"]
+[ext_resource type="Texture2D" uid="uid://dolk1wv85hxew" path="res://resources/images/main_menu_bg.png" id="2_oonqk"]
+[ext_resource type="Texture2D" uid="uid://c3vkrkn660jq6" path="res://resources/images/night_window.png" id="3_dawqx"]
+[ext_resource type="Texture2D" uid="uid://byiwa81nosypk" path="res://resources/images/screens.png" id="3_n3qqn"]
+[ext_resource type="Texture2D" uid="uid://bx7mxuee5csf3" path="res://resources/images/business_cat.png" id="4_dhj7x"]
+
+[node name="DayEndScene" type="Node2D"]
+script = ExtResource("1_hod82")
+
+[node name="BackGround" type="Sprite2D" parent="."]
+texture = ExtResource("2_oonqk")
+centered = false
+
+[node name="Window" type="Sprite2D" parent="."]
+position = Vector2(107, 149)
+texture = ExtResource("3_dawqx")
+
+[node name="Screens" type="Sprite2D" parent="."]
+position = Vector2(310, 225)
+scale = Vector2(1.2, 1.2)
+texture = ExtResource("3_n3qqn")
+
+[node name="BCat" type="Sprite2D" parent="."]
+position = Vector2(162, 321)
+texture = ExtResource("4_dhj7x")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer"]
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -100.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/margin_bottom = 20
+
+[node name="CenterContainer" type="CenterContainer" parent="CanvasLayer/MarginContainer"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/MarginContainer/CenterContainer"]
+custom_minimum_size = Vector2(440, 120)
+layout_mode = 2
+theme_override_constants/margin_bottom = 0
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="CanvasLayer/MarginContainer/CenterContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="NinePatchRect" type="NinePatchRect" parent="CanvasLayer/MarginContainer/CenterContainer/MarginContainer/VBoxContainer2"]
+layout_mode = 2
+size_flags_vertical = 3
+texture = ExtResource("1_un0vf")
+patch_margin_left = 9
+patch_margin_top = 9
+patch_margin_right = 9
+patch_margin_bottom = 9
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/MarginContainer/CenterContainer/MarginContainer/VBoxContainer2"]
+layout_mode = 2
+theme_override_constants/margin_bottom = 4
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/MarginContainer/CenterContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/MarginContainer/CenterContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="ConvoText" type="Label" parent="CanvasLayer/MarginContainer/CenterContainer/MarginContainer/VBoxContainer/MarginContainer"]
+layout_mode = 2
+size_flags_vertical = 1
+text = "This is the end of the day"
+horizontal_alignment = 3
+vertical_alignment = 1
+autowrap_mode = 2
+justification_flags = 161
+
+[node name="CenterContainer" type="CenterContainer" parent="CanvasLayer/MarginContainer/CenterContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="ContinueButton" type="Button" parent="CanvasLayer/MarginContainer/CenterContainer/MarginContainer/VBoxContainer/CenterContainer"]
+layout_mode = 2
+text = "Continue"
+
+[node name="MarginContainer2" type="MarginContainer" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 460
+theme_override_constants/margin_top = 40
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/MarginContainer2"]
+layout_mode = 2
+theme_override_constants/separation = 6
+
+[node name="Label" type="Label" parent="CanvasLayer/MarginContainer2/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 23
+text = "Day Stats:"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/MarginContainer2/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 24
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/MarginContainer2/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/MarginContainer2/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 9
+
+[node name="Company1" type="HBoxContainer" parent="CanvasLayer/MarginContainer2/VBoxContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Name2" type="Label" parent="CanvasLayer/MarginContainer2/VBoxContainer/HBoxContainer/VBoxContainer/Company1"]
+layout_mode = 2
+size_flags_vertical = 1
+theme_override_font_sizes/font_size = 22
+text = "Correct Price"
+vertical_alignment = 1
+
+[node name="Company2" type="HBoxContainer" parent="CanvasLayer/MarginContainer2/VBoxContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Name2" type="Label" parent="CanvasLayer/MarginContainer2/VBoxContainer/HBoxContainer/VBoxContainer/Company2"]
+layout_mode = 2
+size_flags_vertical = 1
+theme_override_font_sizes/font_size = 22
+text = "Wrong Price"
+vertical_alignment = 1
+
+[node name="Company4" type="HBoxContainer" parent="CanvasLayer/MarginContainer2/VBoxContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Name2" type="Label" parent="CanvasLayer/MarginContainer2/VBoxContainer/HBoxContainer/VBoxContainer/Company4"]
+layout_mode = 2
+size_flags_vertical = 1
+theme_override_font_sizes/font_size = 22
+text = "Wrong Comapny"
+vertical_alignment = 1
+
+[node name="Company5" type="HBoxContainer" parent="CanvasLayer/MarginContainer2/VBoxContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Name2" type="Label" parent="CanvasLayer/MarginContainer2/VBoxContainer/HBoxContainer/VBoxContainer/Company5"]
+layout_mode = 2
+size_flags_vertical = 1
+theme_override_font_sizes/font_size = 22
+text = "Lost Transactions"
+vertical_alignment = 1
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="CanvasLayer/MarginContainer2/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 9
+
+[node name="Company1" type="HBoxContainer" parent="CanvasLayer/MarginContainer2/VBoxContainer/HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+
+[node name="CP" type="Label" parent="CanvasLayer/MarginContainer2/VBoxContainer/HBoxContainer/VBoxContainer2/Company1"]
+layout_mode = 2
+size_flags_vertical = 1
+theme_override_font_sizes/font_size = 22
+text = "1"
+vertical_alignment = 1
+
+[node name="Company2" type="HBoxContainer" parent="CanvasLayer/MarginContainer2/VBoxContainer/HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+
+[node name="WP" type="Label" parent="CanvasLayer/MarginContainer2/VBoxContainer/HBoxContainer/VBoxContainer2/Company2"]
+layout_mode = 2
+size_flags_vertical = 1
+theme_override_font_sizes/font_size = 22
+text = "1"
+vertical_alignment = 1
+
+[node name="Company4" type="HBoxContainer" parent="CanvasLayer/MarginContainer2/VBoxContainer/HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+
+[node name="WC" type="Label" parent="CanvasLayer/MarginContainer2/VBoxContainer/HBoxContainer/VBoxContainer2/Company4"]
+layout_mode = 2
+size_flags_vertical = 1
+theme_override_font_sizes/font_size = 22
+text = "1"
+vertical_alignment = 1
+
+[node name="Company5" type="HBoxContainer" parent="CanvasLayer/MarginContainer2/VBoxContainer/HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+
+[node name="LT" type="Label" parent="CanvasLayer/MarginContainer2/VBoxContainer/HBoxContainer/VBoxContainer2/Company5"]
+layout_mode = 2
+size_flags_vertical = 1
+theme_override_font_sizes/font_size = 22
+text = "1"
+vertical_alignment = 1
+
+[connection signal="pressed" from="CanvasLayer/MarginContainer/CenterContainer/MarginContainer/VBoxContainer/CenterContainer/ContinueButton" to="." method="_on_continue_button_pressed"]

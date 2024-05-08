@@ -1,0 +1,44 @@
+[gd_scene load_steps=6 format=3 uid="uid://b185hseq76s0r"]
+
+[ext_resource type="Texture2D" uid="uid://bertdow4n3qib" path="res://resources/images/transaction_bg.png" id="1_oyerx"]
+[ext_resource type="Script" path="res://UtilityScenes/transaction_list.gd" id="1_utj48"]
+[ext_resource type="PackedScene" uid="uid://cgjy71b33jh0a" path="res://UtilityScenes/transaction_entry.tscn" id="2_ju4qj"]
+[ext_resource type="FontFile" uid="uid://vit02gnuv6r8" path="res://resources/fonts/8bitOperatorPlus8-Bold.ttf" id="4_rwijw"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_pmdun"]
+font = ExtResource("4_rwijw")
+font_size = 24
+
+[node name="TransactionList" type="Node2D"]
+script = ExtResource("1_utj48")
+transaction_entry_scene = ExtResource("2_ju4qj")
+
+[node name="BackgroundSprite" type="Sprite2D" parent="."]
+position = Vector2(134, 300)
+texture = ExtResource("1_oyerx")
+
+[node name="VBoxConatiner" type="VBoxContainer" parent="BackgroundSprite"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -132.0
+offset_top = -300.0
+offset_right = -132.0
+offset_bottom = -300.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CenterContainer" type="CenterContainer" parent="BackgroundSprite/VBoxConatiner"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Label" type="Label" parent="BackgroundSprite/VBoxConatiner/CenterContainer"]
+layout_mode = 2
+text = "Buy Requests"
+label_settings = SubResource("LabelSettings_pmdun")
+
+[node name="MarginContainer" type="MarginContainer" parent="BackgroundSprite/VBoxConatiner"]
+layout_mode = 2
+theme_override_constants/margin_bottom = 530
+
+[node name="TransactionEntries" type="Node" parent="."]

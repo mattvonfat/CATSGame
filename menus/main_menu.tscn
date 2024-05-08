@@ -1,0 +1,123 @@
+[gd_scene load_steps=9 format=3 uid="uid://dv2mcsifpr21"]
+
+[ext_resource type="Script" path="res://menus/main_menu.gd" id="1_eirnm"]
+[ext_resource type="FontFile" uid="uid://vit02gnuv6r8" path="res://resources/fonts/8bitOperatorPlus8-Bold.ttf" id="1_iemc5"]
+[ext_resource type="Texture2D" uid="uid://dolk1wv85hxew" path="res://resources/images/main_menu_bg.png" id="2_4ljrh"]
+[ext_resource type="FontFile" uid="uid://b1imy7cxaasb3" path="res://resources/fonts/AustieBostKittenKlub.ttf" id="3_1e7fl"]
+[ext_resource type="Texture2D" uid="uid://bxqyp3mqeu05g" path="res://resources/images/flag.png" id="3_2yd1a"]
+[ext_resource type="Texture2D" uid="uid://byiwa81nosypk" path="res://resources/images/screens.png" id="4_aylso"]
+[ext_resource type="Texture2D" uid="uid://cfddqixg5fwb6" path="res://resources/images/machine.png" id="5_wgw1i"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_iarbe"]
+font = ExtResource("1_iemc5")
+font_size = 140
+
+[node name="MainMenu" type="Node2D"]
+script = ExtResource("1_eirnm")
+
+[node name="Background" type="Sprite2D" parent="."]
+texture = ExtResource("2_4ljrh")
+centered = false
+
+[node name="Flag" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(92, 328)
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("3_2yd1a")
+
+[node name="Screens" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(672, 350)
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("4_aylso")
+
+[node name="Machine" type="Sprite2D" parent="."]
+position = Vector2(287, 330)
+scale = Vector2(1.1, 1.1)
+texture = ExtResource("5_wgw1i")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_top = 50
+
+[node name="CenterContainer" type="CenterContainer" parent="CanvasLayer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CanvasLayer/VBoxContainer/CenterContainer"]
+layout_mode = 2
+text = "C.A.T.S."
+label_settings = SubResource("LabelSettings_iarbe")
+
+[node name="MarginContainer2" type="MarginContainer" parent="CanvasLayer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_top = 20
+
+[node name="CenterContainer2" type="CenterContainer" parent="CanvasLayer/VBoxContainer"]
+layout_mode = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer/VBoxContainer/CenterContainer2"]
+layout_mode = 2
+theme_override_fonts/normal_font = ExtResource("1_iemc5")
+theme_override_font_sizes/normal_font_size = 20
+bbcode_enabled = true
+text = "COMPUTER ASSISTED TRADING SYSTEM"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+
+[node name="CenterContainer3" type="CenterContainer" parent="CanvasLayer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/VBoxContainer/CenterContainer3"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/VBoxContainer/CenterContainer3/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_top = 295
+
+[node name="NewGameButton" type="Button" parent="CanvasLayer/VBoxContainer/CenterContainer3/VBoxContainer"]
+visible = false
+custom_minimum_size = Vector2(150, 50)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_iemc5")
+theme_override_font_sizes/font_size = 16
+text = "New Game"
+
+[node name="Button2" type="Button" parent="CanvasLayer/VBoxContainer/CenterContainer3/VBoxContainer"]
+visible = false
+custom_minimum_size = Vector2(150, 50)
+layout_mode = 2
+text = "Settings"
+
+[node name="Label" type="Label" parent="CanvasLayer"]
+offset_left = 200.0
+offset_top = 181.0
+offset_right = 305.0
+offset_bottom = 258.0
+rotation = -0.198968
+theme_override_colors/font_color = Color(0.858824, 0.494118, 0.54902, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 9
+theme_override_fonts/font = ExtResource("3_1e7fl")
+theme_override_font_sizes/font_size = 46
+text = "CAT"
+
+[connection signal="pressed" from="CanvasLayer/VBoxContainer/CenterContainer3/VBoxContainer/NewGameButton" to="." method="_on_new_game_button_pressed"]
